@@ -29,11 +29,13 @@ namespace Projekt
 
         [OperationContract]
         void Przeglad(string NrRejestracji, string Przebieg, int Waznosc);
-        /*
+        
         [OperationContract]
         string Informacje(string PESEL);
-        */
-     
+
+        [OperationContract]
+        string Waznosc(string PESEL);
+
 
 
     }

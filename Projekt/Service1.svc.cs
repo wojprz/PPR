@@ -29,20 +29,20 @@ namespace Projekt
             }
             return composite;
         }
-        public void ZmianaMiejscaZamieszkania (string PESEL, string MiejsceZamieszkania)
+        public void ZmianaMiejscaZamieszkania(string PESEL, string MiejsceZamieszkania)
         {
-          
+
             Model1 model = new Model1();
             Owners owners = model.Owners.Find(PESEL);
 
 
-            owners.Miejsce_zamieszkania = MiejsceZamieszkania;
+            owners.ZmianaZamieszkania(MiejsceZamieszkania);
 
             model.Entry(owners).State = System.Data.Entity.EntityState.Modified;
             model.SaveChanges();
-            
+
         }
-        
+
         public void NowyKlient(string NrPESEL, string Nazwisko, string Imie, string MiejsceZamieszkania)
         {
             Owners Nowy = new Owners() { PESEL = NrPESEL, Nazwisko = Nazwisko, Imie = Imie, Miejsce_zamieszkania = MiejsceZamieszkania };
@@ -51,7 +51,7 @@ namespace Projekt
 
             model.SaveChanges();
         }
-        
+
         public void NowyPojazd(string PeselWlasciciela, string NrRejestracji, string Marka, string Model, int Rocznik, string Przebieg)
         {
             Samochody Nowy = new Samochody() { PESEL_Własciciela = PeselWlasciciela, Rejestracja = NrRejestracji, Marka = Marka, Model = Model, Rocznik = Rocznik, Przebieg = Przebieg };
@@ -61,10 +61,10 @@ namespace Projekt
             DateTime data = DateTime.Now;
             DateTime dataWaz = data.AddYears(3);
 
-            Rejestracje NowyRe = new Rejestracje() { Rejestracja = NrRejestracji, Pierwsza_Rejestracja = data, Ostatnia_Rejestracja = data , Waznosc_Rejestracji = dataWaz };
+            Rejestracje NowyRe = new Rejestracje() { Rejestracja = NrRejestracji, Pierwsza_Rejestracja = data, Ostatnia_Rejestracja = data, Waznosc_Rejestracji = dataWaz };
             Rejestracje rejestracje = model.Rejestracje.Add(NowyRe);
 
-          
+
             model.SaveChanges();
         }
         public void Przeglad(string NrRejestracji, string Przebieg, int Waznosc)
@@ -82,28 +82,25 @@ namespace Projekt
 
             model.SaveChanges();
         }
-        /*
+
         public string Informacje(string PESEL)
         {
-            string temp;
 
             string PESEL_Własciciela = PESEL;
             Model1 model = new Model1();
-            Samochody samochody = model.Samochody.Find(PESEL_Własciciela);
-
-            temp = (string)samochody.Rejestracja;
-
-            Rejestracje rejestracje = model.Rejestracje.Find(temp);
-
-            string marka = model.Samochody.GetE(PESEL);
-            string modelauta = samochody.Model;
-            string przebieg = samochody.Przebieg;
-            DateTime? waznosc = rejestracje.Waznosc_Rejestracji;
-
-            return string.Format("Osoba o PESELU " + PESEL + " posiada: " + marka + " " + modelauta + " o przebiegu: " + przebieg + " i waznego do: " + waznosc + ".");
+            Samochody samochody = model.Samochody.FirstOrDefault(_c => _c.PESEL_Własciciela == PESEL);
+            string tem = samochody.Rejestracja;
+            Rejestracje rejestracje = model.Rejestracje.FirstOrDefault(_c => _c.Rejestracja == tem);
+            return string.Format("Osoba o PESELU " + samochody.PESEL_Własciciela + " posiada: " + samochody.Marka + " " + samochody.Model + " o przebiegu: " + samochody.Przebieg + " o waznosci rejestracji do: " + rejestracje.Waznosc_Rejestracji +  ".");
 
 
         }
-        */
+        public string Waznosc(string PESEL)
+        {
+            Model1 model = new Model1();
+            Samochody samochody = model.Samochody.FirstOrDefault(_c => _c.PESEL_Własciciela == PESEL);
+            return samochody.Rej();
+        }
+        
     }
 }

@@ -47,5 +47,15 @@ namespace WindowsFormsApp3
 
             }
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Nazwisko_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

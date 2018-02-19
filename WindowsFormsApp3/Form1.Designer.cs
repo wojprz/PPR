@@ -53,6 +53,7 @@
             this.Nazwisko.TabIndex = 2;
             this.Nazwisko.Text = "Nazwisko";
             this.Nazwisko.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Nazwisko.TextChanged += new System.EventHandler(this.Nazwisko_TextChanged);
             // 
             // Imie
             // 
@@ -96,6 +97,7 @@
             this.Controls.Add(this.aPESEL);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

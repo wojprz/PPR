@@ -33,5 +33,7 @@ namespace Projekt
         public string Przebieg { get; set; }
 
         public virtual Owners Owners { get; set; }
+
+        public string Rej() { return Rejestracja; }
     }
 }

@@ -32,5 +32,11 @@ namespace Projekt
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Samochody> Samochody { get; set; }
+
+        public void ZmianaZamieszkania(string NoweMiejsce)
+        {
+            this.Miejsce_zamieszkania = NoweMiejsce;
+            
+        }
     }
 }
