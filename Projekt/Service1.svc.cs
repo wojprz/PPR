@@ -71,11 +71,12 @@ namespace Projekt
         {
             Model1 model = new Model1();
             DateTime data = DateTime.Now;
-            DateTime data2 = data.AddYears(Waznosc);
+            //DateTime data2 = data.AddYears(Waznosc);
 
             Rejestracje rejestracje = model.Rejestracje.Find(NrRejestracji);
             rejestracje.Ostatnia_Rejestracja = data;
-            rejestracje.Waznosc_Rejestracji = data2;
+            // rejestracje.Waznosc_Rejestracji = data2;
+            rejestracje.Waznosc_Rejestracji = rejestracje.Przedluzenie(data, Waznosc);
 
             Samochody samochody = model.Samochody.Find(NrRejestracji);
             samochody.Przebieg = Przebieg;

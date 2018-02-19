@@ -21,5 +21,11 @@ namespace Projekt
 
         [Column("Waznosc Rejestracji", TypeName = "date")]
         public DateTime? Waznosc_Rejestracji { get; set; }
+
+        public DateTime Przedluzenie(DateTime data, int ile)
+        {
+            DateTime temp = data.AddYears(ile);
+            return temp;
+        }
     }
 }
