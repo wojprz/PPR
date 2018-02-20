@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Projekt;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace WindowsFormsApp3
 {
@@ -42,18 +44,14 @@ namespace WindowsFormsApp3
                 string temp2 = Nazwisko.Text;
                 string temp3 = Imie.Text;
                 string temp4 = Miejsce.Text;
-
-               //IService1.NowyKlient(temp1,temp2,temp3,temp4);
+                Service1 s1 = new Service1();
+                
+                s1.NowyKlient(temp1, temp2, temp3, temp4);
 
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Nazwisko_TextChanged(object sender, EventArgs e)
         {
 
         }

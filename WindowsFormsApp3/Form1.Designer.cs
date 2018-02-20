@@ -53,7 +53,6 @@
             this.Nazwisko.TabIndex = 2;
             this.Nazwisko.Text = "Nazwisko";
             this.Nazwisko.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Nazwisko.TextChanged += new System.EventHandler(this.Nazwisko_TextChanged);
             // 
             // Imie
             // 
@@ -89,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1240, 1056);
+            this.ClientSize = new System.Drawing.Size(1240, 1045);
             this.Controls.Add(this.aKlient);
             this.Controls.Add(this.Miejsce);
             this.Controls.Add(this.Imie);

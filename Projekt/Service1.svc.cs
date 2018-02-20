@@ -45,8 +45,8 @@ namespace Projekt
 
         public void NowyKlient(string NrPESEL, string Nazwisko, string Imie, string MiejsceZamieszkania)
         {
-            Owners Nowy = new Owners() { PESEL = NrPESEL, Nazwisko = Nazwisko, Imie = Imie, Miejsce_zamieszkania = MiejsceZamieszkania };
             Model1 model = new Model1();
+            Owners Nowy = new Owners() { PESEL = NrPESEL, Nazwisko = Nazwisko, Imie = Imie, Miejsce_zamieszkania = MiejsceZamieszkania };
             Owners owners = model.Owners.Add(Nowy);
 
             model.SaveChanges();
@@ -96,11 +96,20 @@ namespace Projekt
 
 
         }
-        public string Waznosc(string PESEL)
+        public string Rejestracja(string PESEL)
         {
             Model1 model = new Model1();
             Samochody samochody = model.Samochody.FirstOrDefault(_c => _c.PESEL_Własciciela == PESEL);
             return samochody.Rej();
+        }
+        public DateTime? Waznosc(string PESEL)
+        {
+            Model1 model = new Model1();
+            Samochody samochody = model.Samochody.FirstOrDefault(_c => _c.PESEL_Własciciela == PESEL);
+            string temp = samochody.Rej();
+            Rejestracje rejestracje = model.Rejestracje.FirstOrDefault(_c => _c.Rejestracja == temp);
+            return rejestracje.Waznosc_Rejestracji;
+
         }
     }
 }

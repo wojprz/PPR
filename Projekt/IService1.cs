@@ -34,9 +34,12 @@ namespace Projekt
         string Informacje(string PESEL);
 
         [OperationContract]
-        string Waznosc(string PESEL);
+        string Rejestracja(string PESEL);
 
- 
+        [OperationContract]
+        DateTime? Waznosc(string PESEL);
+
+
 
 
 
