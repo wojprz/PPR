@@ -29,71 +29,109 @@ namespace Projekt
             }
             return composite;
         }
-        public void ZmianaMiejscaZamieszkania(string PESEL, string MiejsceZamieszkania)
+        public string ZmianaMiejscaZamieszkania(string PESEL, string MiejsceZamieszkania)
         {
+            if (PESEL == null || MiejsceZamieszkania == null)
+            {
+                return "Brak wymaganych danych";
+            }
+            else
+            {
 
-            Model1 model = new Model1();
-            Owners owners = model.Owners.Find(PESEL);
+                Model1 model = new Model1();
+                Owners owners = model.Owners.Find(PESEL);
 
 
-            owners.ZmianaZamieszkania(MiejsceZamieszkania);
+                owners.ZmianaZamieszkania(MiejsceZamieszkania);
 
-            model.Entry(owners).State = System.Data.Entity.EntityState.Modified;
-            model.SaveChanges();
+                model.Entry(owners).State = System.Data.Entity.EntityState.Modified;
+                model.SaveChanges();
 
+                return "Pomyslnie zmienono miejsce zamieszkania";
+            }
         }
 
-        public void NowyKlient(string NrPESEL, string Nazwisko, string Imie, string MiejsceZamieszkania)
+        public string NowyKlient(string NrPESEL, string Nazwisko, string Imie, string MiejsceZamieszkania)
         {
-            Model1 model = new Model1();
-            Owners Nowy = new Owners() { PESEL = NrPESEL, Nazwisko = Nazwisko, Imie = Imie, Miejsce_zamieszkania = MiejsceZamieszkania };
-            Owners owners = model.Owners.Add(Nowy);
+            if (NrPESEL == null || Nazwisko == null || Imie == null || MiejsceZamieszkania == null)
+            {
+                return "Brak wymaganych danych";
+            }
+            else
+            {
+                Model1 model = new Model1();
+                Owners Nowy = new Owners() { PESEL = NrPESEL, Nazwisko = Nazwisko, Imie = Imie, Miejsce_zamieszkania = MiejsceZamieszkania };
+                Owners owners = model.Owners.Add(Nowy);
 
-            model.SaveChanges();
+                model.SaveChanges();
+                return "Pomyslnie dodano klienta";
+            }
         }
 
-        public void NowyPojazd(string PeselWlasciciela, string NrRejestracji, string Marka, string Model, int Rocznik, string Przebieg)
+        public string NowyPojazd(string PeselWlasciciela, string NrRejestracji, string Marka, string Model, int Rocznik, string Przebieg)
         {
-            Samochody Nowy = new Samochody() { PESEL_Własciciela = PeselWlasciciela, Rejestracja = NrRejestracji, Marka = Marka, Model = Model, Rocznik = Rocznik, Przebieg = Przebieg };
-            Model1 model = new Model1();
-            Samochody samochody = model.Samochody.Add(Nowy);
+            if (PeselWlasciciela == null || NrRejestracji == null || Marka == null || Model == null || Rocznik == 0 || Przebieg == null)
+            {
+                return "Brak wymaganych danych";
+            }
+            else
+            {
+                Samochody Nowy = new Samochody() { PESEL_Własciciela = PeselWlasciciela, Rejestracja = NrRejestracji, Marka = Marka, Model = Model, Rocznik = Rocznik, Przebieg = Przebieg };
+                Model1 model = new Model1();
+                Samochody samochody = model.Samochody.Add(Nowy);
 
-            DateTime data = DateTime.Now;
-            DateTime dataWaz = data.AddYears(3);
+                DateTime data = DateTime.Now;
+                DateTime dataWaz = data.AddYears(3);
 
-            Rejestracje NowyRe = new Rejestracje() { Rejestracja = NrRejestracji, Pierwsza_Rejestracja = data, Ostatnia_Rejestracja = data, Waznosc_Rejestracji = dataWaz };
-            Rejestracje rejestracje = model.Rejestracje.Add(NowyRe);
+                Rejestracje NowyRe = new Rejestracje() { Rejestracja = NrRejestracji, Pierwsza_Rejestracja = data, Ostatnia_Rejestracja = data, Waznosc_Rejestracji = dataWaz };
+                Rejestracje rejestracje = model.Rejestracje.Add(NowyRe);
 
 
-            model.SaveChanges();
+                model.SaveChanges();
+
+                return "Pomyslnie dodano pojazd.";
+            }
         }
-        public void Przeglad(string NrRejestracji, string Przebieg, int Waznosc)
+        public string Przeglad(string NrRejestracji, string Przebieg, int Waznosc)
         {
-            Model1 model = new Model1();
-            DateTime data = DateTime.Now;
-            //DateTime data2 = data.AddYears(Waznosc);
+            if (NrRejestracji == null || Przebieg == null || Waznosc == 0)
+            {
+                return "Brak danej";
+            }
+            else
+            {
+                Model1 model = new Model1();
+                DateTime data = DateTime.Now;
+                //DateTime data2 = data.AddYears(Waznosc);
 
-            Rejestracje rejestracje = model.Rejestracje.Find(NrRejestracji);
-            rejestracje.Ostatnia_Rejestracja = data;
-            // rejestracje.Waznosc_Rejestracji = data2;
-            rejestracje.Waznosc_Rejestracji = rejestracje.Przedluzenie(data, Waznosc);
+                Rejestracje rejestracje = model.Rejestracje.Find(NrRejestracji);
+                rejestracje.Ostatnia_Rejestracja = data;
+                // rejestracje.Waznosc_Rejestracji = data2;
+                rejestracje.Waznosc_Rejestracji = rejestracje.Przedluzenie(data, Waznosc);
 
-            Samochody samochody = model.Samochody.Find(NrRejestracji);
-            samochody.Przebieg = Przebieg;
+                Samochody samochody = model.Samochody.Find(NrRejestracji);
+                samochody.Przebieg = Przebieg;
 
-            model.SaveChanges();
+                model.SaveChanges();
+                return "Pomyslnie wykonano przeglad";
+            }
         }
 
         public string Informacje(string PESEL)
         {
-
-            string PESEL_Własciciela = PESEL;
-            Model1 model = new Model1();
-            Samochody samochody = model.Samochody.FirstOrDefault(_c => _c.PESEL_Własciciela == PESEL);
-            string tem = samochody.Rejestracja;
-            Rejestracje rejestracje = model.Rejestracje.FirstOrDefault(_c => _c.Rejestracja == tem);
-            return string.Format("Osoba o PESELU " + samochody.PESEL_Własciciela + " posiada: " + samochody.Marka + " " + samochody.Model + " o przebiegu: " + samochody.Przebieg + " o waznosci rejestracji do: " + rejestracje.Waznosc_Rejestracji + ".");
-
+            if (PESEL == null)
+            {
+                return "Brak PESELu.";
+            }
+            else
+            {
+                string PESEL_Własciciela = PESEL;
+                Model1 model = new Model1();
+                Samochody samochody = model.Samochody.FirstOrDefault(_c => _c.PESEL_Własciciela == PESEL);
+                string tem = samochody.Rejestracja;
+                Rejestracje rejestracje = model.Rejestracje.FirstOrDefault(_c => _c.Rejestracja == tem);
+                return string.Format("Osoba o PESELU " + samochody.PESEL_Własciciela + " posiada: " + samochody.Marka + " " + samochody.Model + " o przebiegu: " + samochody.Przebieg + " o waznosci rejestracji do: " + rejestracje.Waznosc_Rejestracji + ".");
+            }
 
         }
         public string Rejestracja(string PESEL)

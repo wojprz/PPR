@@ -19,16 +19,16 @@ namespace Projekt
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        void ZmianaMiejscaZamieszkania(string PESEL, string MiejsceZamieszkania);
+        string ZmianaMiejscaZamieszkania(string PESEL, string MiejsceZamieszkania);
 
         [OperationContract]
-        void NowyKlient(string NrPESEL, string Nazwisko, string Imie, string MiejsceZamieszkania);
+        string NowyKlient(string NrPESEL, string Nazwisko, string Imie, string MiejsceZamieszkania);
 
         [OperationContract]
-        void NowyPojazd(string PeselWlasciciela, string NrRejestracji, string Marka, string Model, int Rocznik, string Przebieg);
+        string NowyPojazd(string PeselWlasciciela, string NrRejestracji, string Marka, string Model, int Rocznik, string Przebieg);
 
         [OperationContract]
-        void Przeglad(string NrRejestracji, string Przebieg, int Waznosc);
+        string Przeglad(string NrRejestracji, string Przebieg, int Waznosc);
         
         [OperationContract]
         string Informacje(string PESEL);

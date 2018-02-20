@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:5314/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Projekt" />
+  <xs:element name="GetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="value" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Projekt" minOccurs="0" name="composite" nillable="true" type="q1:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataUsingDataContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Projekt" minOccurs="0" name="GetDataUsingDataContractResult" nillable="true" type="q2:CompositeType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZmianaMiejscaZamieszkania">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PESEL" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MiejsceZamieszkania" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ZmianaMiejscaZamieszkaniaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NowyKlient">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NrPESEL" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Nazwisko" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Imie" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="MiejsceZamieszkania" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NowyKlientResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NowyPojazd">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PeselWlasciciela" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NrRejestracji" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Marka" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Rocznik" type="xs:int" />
+        <xs:element minOccurs="0" name="Przebieg" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NowyPojazdResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Przeglad">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NrRejestracji" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Przebieg" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Waznosc" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PrzegladResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Informacje">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PESEL" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InformacjeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="InformacjeResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rejestracja">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PESEL" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RejestracjaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RejestracjaResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Waznosc">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PESEL" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="WaznoscResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="WaznoscResult" nillable="true" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
