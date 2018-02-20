@@ -36,6 +36,8 @@ namespace Projekt
         [OperationContract]
         string Waznosc(string PESEL);
 
+ 
+
 
 
     }

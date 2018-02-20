@@ -92,7 +92,7 @@ namespace Projekt
             Samochody samochody = model.Samochody.FirstOrDefault(_c => _c.PESEL_Własciciela == PESEL);
             string tem = samochody.Rejestracja;
             Rejestracje rejestracje = model.Rejestracje.FirstOrDefault(_c => _c.Rejestracja == tem);
-            return string.Format("Osoba o PESELU " + samochody.PESEL_Własciciela + " posiada: " + samochody.Marka + " " + samochody.Model + " o przebiegu: " + samochody.Przebieg + " o waznosci rejestracji do: " + rejestracje.Waznosc_Rejestracji +  ".");
+            return string.Format("Osoba o PESELU " + samochody.PESEL_Własciciela + " posiada: " + samochody.Marka + " " + samochody.Model + " o przebiegu: " + samochody.Przebieg + " o waznosci rejestracji do: " + rejestracje.Waznosc_Rejestracji + ".");
 
 
         }
@@ -102,6 +102,5 @@ namespace Projekt
             Samochody samochody = model.Samochody.FirstOrDefault(_c => _c.PESEL_Własciciela == PESEL);
             return samochody.Rej();
         }
-        
     }
 }
